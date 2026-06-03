@@ -19,12 +19,11 @@
     }
 
     * { box-sizing: border-box; }
-
     html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
-      font-family: Inter, "Segoe UI", Arial, sans-serif;
+      font-family: Inter, "Segoe UI", Arial, "Microsoft YaHei", sans-serif;
       background: radial-gradient(circle at top left, #18345d 0, transparent 34%), var(--bg);
       color: var(--text);
       line-height: 1.65;
@@ -44,7 +43,12 @@
 
     nav h2 { margin: 0; letter-spacing: 0.04em; }
 
-    nav div { display: flex; gap: 18px; flex-wrap: wrap; }
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
 
     nav a {
       color: var(--muted);
@@ -53,6 +57,22 @@
     }
 
     nav a:hover { color: var(--accent); }
+
+    .lang-toggle {
+      cursor: pointer;
+      border: 1px solid var(--line);
+      background: var(--panel-soft);
+      color: var(--text);
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-weight: 800;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .lang-toggle:hover {
+      transform: translateY(-1px);
+      border-color: var(--accent);
+    }
 
     .hero {
       min-height: 86vh;
@@ -82,7 +102,7 @@
       margin: 0;
       font-size: clamp(1.5rem, 7vw, 3.5rem);
       line-height: 1.2;
-      letter-spacing: -0.06em;
+      letter-spacing: -0.04em;
     }
 
     .subtitle {
@@ -166,8 +186,6 @@
 
     .card h3, .project-card h3 { margin: 0 0 10px; color: var(--accent); }
     .card p, .project-card p { margin: 0; color: var(--muted); }
-    .card ul { margin: 12px 0 0; padding-left: 20px; color: var(--muted); }
-
     .tags { display: flex; flex-wrap: wrap; gap: 10px; }
 
     .tags span {
@@ -179,7 +197,7 @@
       font-weight: 650;
     }
 
-    .timeline { display: grid; gap: 18px; }
+    .timeline { display: grid; gap: 18px; margin-bottom: 36px; }
 
     .item {
       padding: 22px;
@@ -191,14 +209,9 @@
     .item h3 { margin: 0; }
     .meta { color: var(--accent-2); font-weight: 700; margin: 4px 0 10px; }
     .item p { color: var(--muted); margin: 0; }
-
     .project-card a { color: var(--accent-2); font-weight: 800; }
 
-    .contact-box {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-    }
+    .contact-box { display: flex; flex-wrap: wrap; gap: 14px; }
 
     .contact-box a {
       padding: 12px 16px;
@@ -228,162 +241,199 @@
   <header class="hero">
     <nav>
       <h2>Xiangyu Ji</h2>
-      <div>
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#experience">Experience</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
+      <div class="nav-links">
+        <a href="#about" data-i18n="nav_about">About</a>
+        <a href="#skills" data-i18n="nav_skills">Skills</a>
+        <a href="#experience" data-i18n="nav_experience">Experience</a>
+        <a href="#projects" data-i18n="nav_projects">Projects</a>
+        <a href="#contact" data-i18n="nav_contact">Contact</a>
+        <button class="lang-toggle" id="langToggle" type="button">中文</button>
       </div>
     </nav>
 
     <div class="hero-content">
       <div>
-        <div class="eyebrow">Game Designer & Developer</div>
-        <h1><p style="text-align: justify;">Designing and Developing gameplay systems that bring games to life.</p></h1>
-        <p class="subtitle">Gameplay Systems · Game Architecture · Unity / Unreal · C++ / C# · Computer Graphics · AI</p>
-        <p class="intro">
-          I design and develop game systems that balance player experience, technical feasibility, and production needs. My work covers gameplay systems, rapid prototyping, AI behaviour, combat systems, level content, computer graphics, and rendering techniques.
-        </p>
+        <div class="eyebrow" data-i18n="eyebrow">Game Designer & Developer</div>
+        <h1 data-i18n="hero_title">Designing and developing gameplay systems that bring games to life.</h1>
+        <p class="subtitle" data-i18n="hero_subtitle">Gameplay Systems · Game Architecture · Unity / Unreal · C++ / C# · Computer Graphics · AI</p>
+        <p class="intro" data-i18n="hero_intro">I design and develop game systems that balance player experience, technical feasibility, and production needs. My work covers gameplay systems, rapid prototyping, AI behaviour, combat systems, level content, computer graphics, and rendering techniques.</p>
         <div class="hero-actions">
-          <a class="btn" href="#projects">View Projects</a>
-          <a class="btn secondary" href="#contact">Contact Me</a>
+          <a class="btn" href="#projects" data-i18n="view_projects">View Projects</a>
+          <a class="btn secondary" href="#contact" data-i18n="contact_me">Contact Me</a>
         </div>
       </div>
 
       <aside class="hero-card">
-        <h3>Profile Highlights</h3>
-        <p><strong>Current Location:</strong> Coventry, United Kingdom</p>
-        <p><strong>Education:</strong><br>MSc Games Engineering, University of Warwick<br>BSc Software Engineering, Xi’an Jiaotong University</p>
-        <p><strong>Focus:</strong> Gameplay systems, Level design, NPC behaviour, Combat systems, Graphics, In-game AI</p>
-        <p><strong>Published Game:</strong> <i>Empire Twilight</i> on Steam</p>
+        <h3 data-i18n="highlights_title">Profile Highlights</h3>
+        <p><strong data-i18n="location_label">Current Location:</strong> <span data-i18n="location_value">Coventry, United Kingdom</span></p>
+        <p><strong data-i18n="education_label">Education:</strong><br><span data-i18n="education_value">MSc Games Engineering, University of Warwick<br>BSc Software Engineering, Xi’an Jiaotong University</span></p>
+        <p><strong data-i18n="focus_label">Focus:</strong> <span data-i18n="focus_value">Gameplay systems, Level design, NPC behaviour, Combat systems, Graphics, In-game AI</span></p>
+        <p><strong data-i18n="published_label">Published Game:</strong> <span data-i18n="published_value"><i>Empire Twilight</i> on Steam</span></p>
       </aside>
     </div>
   </header>
 
   <section id="about">
-    <h2>About Me</h2>
-    <p class="section-lead">
-      I am a game designer and developer with experience in gameplay systems design, rapid prototyping, and game architecture. 
-      I am good at translating player needs into well-structured game systems while balancing design goals with development feasibility. 
-      I also have strong communication and collaboration skills, with experience working effectively in teams.
-    </p>
+    <h2 data-i18n="about_title">About Me</h2>
+    <p class="section-lead" data-i18n="about_text">I am a game designer and developer with experience in gameplay systems design, rapid prototyping, and game architecture. I am good at translating player needs into well-structured game systems while balancing design goals with development feasibility. I also have strong communication and collaboration skills, with experience working effectively in teams.</p>
     <div class="grid">
       <div class="card">
-        <h3>Design Strengths</h3>
-        <p>Game design, Level design, NPC behaviour design, Combat system design, Game narrative design, Deep understanding of game mechanics.</p>
+        <h3 data-i18n="design_strengths_title">Design Strengths</h3>
+        <p data-i18n="design_strengths_text">Game design, Level design, NPC behaviour design, Combat system design, Game narrative design, Deep understanding of game mechanics.</p>
       </div>
       <div class="card">
-        <h3>Technical Strengths</h3>
-        <p>Unity and Unreal development, C++/C# programming, Computer graphics, In-game AI, Computer network, Optimisation experience.</p>
+        <h3 data-i18n="technical_strengths_title">Technical Strengths</h3>
+        <p data-i18n="technical_strengths_text">Unity and Unreal development, C++/C# programming, Computer graphics, In-game AI, Computer network, Optimisation experience.</p>
       </div>
     </div>
   </section>
 
   <section id="skills">
-    <h2>Skills</h2>
-    <p class="section-lead">A focused overview of the tools, languages, and development areas from my CV.</p>
+    <h2 data-i18n="skills_title">Skills</h2>
+    <p class="section-lead" data-i18n="skills_lead">A focused overview of the tools, languages, and development areas from my CV.</p>
     <div class="tags">
-      <span>Game Design</span>
-      <span>Level Design</span>
-      <span>Combat Systems</span>
-      <span>NPC Behaviour</span>
-      <span>In-Game AI</span>
-      <span>Computer Graphics</span>
-      <span>Unity</span>
-      <span>Unreal Engine</span>
-      <span>Blueprint</span>
-      <span>C++</span>
-      <span>C#</span>
-      <span>C</span>
-      <span>Java</span>
-      <span>Python</span>
-      <span>GitHub</span>
-      <span>SVN</span>
-      <span>Photoshop</span>
-      <span>Blender</span>
+      <span>Game Design</span><span>Level Design</span><span>Combat Systems</span><span>NPC Behaviour</span><span>In-Game AI</span><span>Computer Graphics</span><span>Unity</span><span>Unreal Engine</span><span>Blueprint</span><span>C++</span><span>C#</span><span>C</span><span>Java</span><span>Python</span>
+      <span>GitHub</span><span>SVN</span><span>Photoshop</span><span>Blender</span><span>Excel</span><span>XMind</span>
     </div>
   </section>
 
   <section id="experience">
-    <h2>Education</h2>
+    <h2 data-i18n="education_section_title">Education</h2>
     <div class="timeline">
       <div class="item">
-        <h3>University of Warwick — MSc Games Engineering</h3>
-        <div class="meta">United Kingdom</div>
-        <p>Studied C++ Programming, Computer graphics, Advanced computer graphics, Games Engineering, Game design. 
-          Projects included a C++ survivor-like game, a C++ first-person shooter PVE 3D survival game, 
-          a ray tracer/path tracer with Open Image Denoise, an client-server chat system, a team-based sci-fi game development, 
-          and a Real-time strategy/action 3D individual game.</p>
+        <h3 data-i18n="warwick_title">University of Warwick — MSc Games Engineering</h3>
+        <div class="meta" data-i18n="warwick_meta">United Kingdom</div>
+        <p data-i18n="warwick_text">Studied C++ Programming, Computer graphics, Advanced computer graphics, Games Engineering, Game design. Projects included a C++ survivor-like game, a C++ first-person shooter PVE 3D survival game, a ray tracer/path tracer with Open Image Denoise, a client-server chat system, a team-based sci-fi game development, and a real-time strategy/action 3D individual game.</p>
       </div>
       <div class="item">
-        <h3>Xi’an Jiaotong University — BSc Software Engineering</h3>
-        <div class="meta">China</div>
-        <p>Studied advanced mathematics, probability theory, algorithms, software quality assurance, 
-          natural language processing, and machine learning. 
-          Built projects including keyword-based lyric generation and handwritten digit recognition.</p>
+        <h3 data-i18n="xjtu_title">Xi’an Jiaotong University — BSc Software Engineering</h3>
+        <div class="meta" data-i18n="xjtu_meta">China</div>
+        <p data-i18n="xjtu_text">Studied advanced mathematics, probability theory, algorithms, software quality assurance, natural language processing, and machine learning. Built projects including keyword-based lyric generation and handwritten digit recognition.</p>
       </div>
     </div>
-    <h2>Experience</h2>
+
+    <h2 data-i18n="experience_section_title">Experience</h2>
     <div class="timeline">
       <div class="item">
-        <h3>Tencent TiMi Studio — Game System Design Intern</h3>
-        <div class="meta">Age of Empires Mobile</div>
-        <p>I participated in the design of game <i> Age of Empires Mobile</i>. 
-          Designed and shipped the Hero Talent System, covering full-cycle feature development from concept to live release.</p>
+        <h3 data-i18n="tencent_title">Tencent TiMi Studio — Game System Design Intern</h3>
+        <div class="meta" data-i18n="tencent_meta">China</div>
+        <p data-i18n="tencent_text">I participated in the design of <i>Age of Empires Mobile</i>. Designed and shipped the Hero Talent System, covering full-cycle feature development from concept to live release.</p>
       </div>
     </div>
   </section>
 
   <section id="projects">
-    <h2>Selected Projects</h2>
+    <h2 data-i18n="projects_title">Selected Projects</h2>
     <div class="grid">
-      <div class="project-card">
-        <h3>Empire Twilight</h3>
-        <p>A single-player strategy game combining multiple gameplay styles. Designed and developed independently and published on Steam. 
-          This game was developed by using Unity.</p>
-        <p><a href="https://store.steampowered.com/app/2966280/_/" target="_blank" rel="noopener">View on Steam →</a></p>
-      </div>
-      <div class="project-card">
-        <h3>Touch Heart</h3>
-        <p>A 2D strategy puzzle game designed and developed as an independent project developed by using Unity.</p>
-        <p><a href="https://github.com/LeoJi-Ychen/Touch-Heart.git" target="_blank" rel="noopener">View on GitHub →</a></p>
-      </div>
-      <div class="project-card">
-        <h3>Jurassic Survivor</h3>
-        <p>A 3D FPS survivor-like game developed by using C++.</p>
-        <p><a href="https://github.com/LeoJi-Ychen/ComputerGraphicsProject.git" target="_blank" rel="noopener">View on GitHub →</a></p>
-      </div>
-      <div class="project-card">
-        <h3>C++ Ray Tracing Renderer</h3>
-        <p>Implemented a ray tracer and path tracer in C++, including rendering materials and AI denoising with Open Image Denoise.</p>
-      </div>
-      <div class="project-card">
-        <h3>A 3D Medieval RTS / Action Game</h3>
-        <p>Designed and developed a 3D medieval-style game combining RTS and action elements, including the game loop, NPC behaviour, combat system, and player controls.</p>
-      </div>
-      <div class="project-card">
-        <h3>A Sci-Fi Combat Game</h3>
-        <p>Worked in a 43-person team and contributed to tank campaign level content, enemy module design and implementation, behaviour trees, finite state machines, pathfinding, and GitHub version control.</p>
-      </div>
-      <div class="project-card">
-        <h3>A Network Group Chat System</h3>
-        <p>Developed a client-server Internet chat application with UI and notification sounds, then integrated the GROQ AI API to support AI group chat assistant features.</p>
-      </div>
+      <div class="project-card"><h3 data-i18n="game_title">Empire Twilight</h3><p data-i18n="empire_text">A single-player strategy game combining multiple gameplay styles. Designed and developed independently and published on Steam. This game was developed by using Unity.</p><p><a href="https://store.steampowered.com/app/2966280/_/" target="_blank" rel="noopener" data-i18n="view_steam">View on Steam →</a></p></div>
+      <div class="project-card"><h3>Touch Heart</h3><p data-i18n="touch_text">A 2D strategy puzzle game designed and developed as an independent project developed by using Unity.</p><p><a href="https://github.com/LeoJi-Ychen/Touch-Heart.git" target="_blank" rel="noopener" data-i18n="view_github">View on GitHub →</a></p></div>
+      <div class="project-card"><h3>Jurassic Survivor</h3><p data-i18n="jurassic_text">A 3D FPS survivor-like game developed by using C++.</p><p><a href="https://github.com/LeoJi-Ychen/ComputerGraphicsProject.git" target="_blank" rel="noopener" data-i18n="view_github">View on GitHub →</a></p></div>
+      <div class="project-card"><h3 data-i18n="ray_title">C++ Ray Tracing Renderer</h3><p data-i18n="ray_text">Implemented a ray tracer and path tracer in C++, including rendering materials and AI denoising with Open Image Denoise.</p></div>
+      <div class="project-card"><h3 data-i18n="medieval_title">A 3D Medieval RTS / Action Game</h3><p data-i18n="medieval_text">Designed and developed a 3D medieval-style game combining RTS and action elements, including the game loop, NPC behaviour, combat system, and player controls.</p></div>
+      <div class="project-card"><h3 data-i18n="scifi_title">A Sci-Fi Combat Game</h3><p data-i18n="scifi_text">Worked in a 43-person team and contributed to tank campaign level content, enemy module design and implementation, behaviour trees, finite state machines, pathfinding, and GitHub version control.</p></div>
+      <div class="project-card"><h3 data-i18n="chat_title">A Network Group Chat System</h3><p data-i18n="chat_text">Developed a client-server Internet chat application with UI and notification sounds, then integrated the GROQ AI API to support AI group chat assistant features.</p></div>
     </div>
   </section>
 
   <section id="contact">
-    <h2>Contact</h2>
-    <p class="section-lead">I am open to game design and game development opportunities.</p>
+    <h2 data-i18n="contact_title">Contact</h2>
+    <p class="section-lead" data-i18n="contact_lead">I am open to game design and game development opportunities.</p>
     <div class="contact-box">
       <a href="mailto:492898584@qq.com">492898584@qq.com</a>
       <a href="https://github.com/LeoJi-Ychen" target="_blank" rel="noopener">GitHub</a>
     </div>
   </section>
 
-  <footer>
-    © 2026 Xiangyu Ji. Game Designer & Developer.
-  </footer>
+  <footer data-i18n="footer_text">© 2026 Xiangyu Ji. Game Designer & Developer.</footer>
+
+  <script>
+    const translations = {
+      en: {
+        nav_about: "About", nav_skills: "Skills", nav_experience: "Experience", nav_projects: "Projects", nav_contact: "Contact",
+        eyebrow: "Game Designer & Developer",
+        hero_title: "Designing and developing gameplay systems that bring games to life.",
+        hero_subtitle: "Gameplay Systems · Game Architecture · Unity / Unreal · C++ / C# · Computer Graphics · AI",
+        hero_intro: "I design and develop game systems that balance player experience, technical feasibility, and production needs. My work covers gameplay systems, rapid prototyping, AI behaviour, combat systems, level content, computer graphics, and rendering techniques.",
+        view_projects: "View Projects", contact_me: "Contact Me",
+        highlights_title: "Profile Highlights", location_label: "Current Location:", location_value: "Coventry, United Kingdom",
+        education_label: "Education:", education_value: "MSc Games Engineering, University of Warwick<br>BSc Software Engineering, Xi’an Jiaotong University",
+        focus_label: "Focus:", focus_value: "Gameplay systems, Level design, NPC behaviour, Combat systems, Graphics, In-game AI",
+        published_label: "Published Game:", published_value: "<i>Empire Twilight</i> on Steam",
+        about_title: "About Me",
+        about_text: "I am a game designer and developer with experience in gameplay systems design, rapid prototyping, and game architecture. I am good at translating player needs into well-structured game systems while balancing design goals with development feasibility. I also have strong communication and collaboration skills, with experience working effectively in teams.",
+        design_strengths_title: "Design Strengths", design_strengths_text: "Game design, Level design, NPC behaviour design, Combat system design, Game narrative design, Deep understanding of game mechanics.",
+        technical_strengths_title: "Technical Strengths", technical_strengths_text: "Unity and Unreal development, C++/C# programming, Computer graphics, In-game AI, Computer network, Optimisation experience.",
+        skills_title: "Skills", skills_lead: "A focused overview of the tools, languages, and development areas from my CV.",
+        education_section_title: "Education", warwick_title: "University of Warwick — MSc Games Engineering", warwick_meta: "United Kingdom",
+        warwick_text: "Studied C++ Programming, Computer graphics, Advanced computer graphics, Games Engineering, Game design. Projects included a C++ survivor-like game, a C++ first-person shooter PVE 3D survival game, a ray tracer/path tracer with Open Image Denoise, a client-server chat system, a team-based sci-fi game development, and a real-time strategy/action 3D individual game.",
+        xjtu_title: "Xi’an Jiaotong University — BSc Software Engineering", xjtu_meta: "China",
+        xjtu_text: "Studied advanced mathematics, probability theory, algorithms, software quality assurance, natural language processing, and machine learning. Built projects including keyword-based lyric generation and handwritten digit recognition.",
+        experience_section_title: "Experience", tencent_title: "Tencent TiMi Studio — Game System Design Intern", tencent_meta: "China",
+        tencent_text: "I participated in the design of <i>Age of Empires Mobile</i>. Designed and shipped the Hero Talent System, covering full-cycle feature development from concept to live release.",
+        projects_title: "Selected Projects", empire_text: "A single-player strategy game combining multiple gameplay styles. Designed and developed independently and published on Steam. This game was developed by using Unity.",
+        touch_text: "A 2D strategy puzzle game designed and developed as an independent project developed by using Unity.", jurassic_text: "A 3D FPS survivor-like game developed by using C++.",
+        game_title:"Empire Twilight", ray_title: "C++ Ray Tracing Renderer", ray_text: "Implemented a ray tracer and path tracer in C++, including rendering materials and AI denoising with Open Image Denoise.",
+        medieval_title: "A 3D Medieval RTS / Action Game", medieval_text: "Designed and developed a 3D medieval-style game combining RTS and action elements, including the game loop, NPC behaviour, combat system, and player controls.",
+        scifi_title: "A Sci-Fi Combat Game", scifi_text: "Worked in a 43-person team and contributed to tank campaign level content, enemy module design and implementation, behaviour trees, finite state machines, pathfinding, and GitHub version control.",
+        chat_title: "A Network Group Chat System", chat_text: "Developed a client-server Internet chat application with UI and notification sounds, then integrated the GROQ AI API to support AI group chat assistant features.",
+        view_steam: "View on Steam →", view_github: "View on GitHub →",
+        contact_title: "Contact", contact_lead: "I am open to game design and game development opportunities.", footer_text: "© 2026 Xiangyu Ji. Game Designer & Developer."
+      },
+      zh: {
+        nav_about: "关于我", nav_skills: "技能", nav_experience: "经历", nav_projects: "项目", nav_contact: "联系",
+        eyebrow: "游戏设计师 / 游戏开发者",
+        hero_title: "设计并开发让游戏真正运转起来的玩法系统。",
+        hero_subtitle: "玩法系统 · 游戏架构 · Unity / Unreal · C++ / C# · 计算机图形学 · AI",
+        hero_intro: "我专注于设计和开发兼顾玩家体验、技术可行性与制作需求的游戏系统。我的工作涵盖玩法系统、快速原型、AI 行为、战斗系统、关卡内容、计算机图形学与渲染技术。",
+        view_projects: "查看项目", contact_me: "联系我",
+        highlights_title: "个人亮点", location_label: "当前所在地：", location_value: "英国考文垂",
+        education_label: "教育背景：", education_value: "游戏工程硕士，华威大学<br>软件工程学士，西安交通大学",
+        focus_label: "方向：", focus_value: "玩法系统、关卡设计、NPC 行为、战斗系统、图形学、游戏 AI",
+        published_label: "已发布游戏：", published_value: "Steam 游戏《帝国余晖》",
+        about_title: "关于我",
+        about_text: "我是一名具有玩法系统设计、快速原型开发和游戏架构经验的游戏设计师与开发者。我擅长将玩家需求转化为结构清晰的游戏系统，并在设计目标与开发可行性之间取得平衡。同时，我具备良好的沟通与团队协作能力，并拥有团队项目开发经验。",
+        design_strengths_title: "设计能力", design_strengths_text: "游戏设计、关卡设计、NPC 行为设计、战斗系统设计、游戏叙事设计，以及对游戏机制的深入理解。",
+        technical_strengths_title: "技术能力", technical_strengths_text: "Unity 与 Unreal 开发、C++ / C# 编程、计算机图形学、游戏 AI、计算机网络与性能优化经验。",
+        skills_title: "技能", skills_lead: "以下是我简历中主要工具、编程语言与开发方向的概览。",
+        education_section_title: "教育背景", warwick_title: "华威大学 — 游戏工程硕士", warwick_meta: "英国",
+        warwick_text: "学习内容包括 C++ 编程、计算机图形学、高级计算机图形学、游戏工程与游戏设计。项目包括 C++ 幸存者类游戏、C++ 第一人称 PVE 3D 生存游戏、结合 Open Image Denoise 的光线追踪 / 路径追踪渲染器、客户端-服务器聊天系统、团队科幻游戏开发项目，以及个人实时战略 / 动作 3D 游戏。",
+        xjtu_title: "西安交通大学 — 软件工程学士", xjtu_meta: "中国",
+        xjtu_text: "学习内容包括高等数学、概率论、算法、软件质量保证、自然语言处理与机器学习。完成了基于关键词的歌词生成和手写数字识别等项目。",
+        experience_section_title: "实习经历", tencent_title: "腾讯天美工作室 — 游戏系统设计实习生", tencent_meta: "中国",
+        tencent_text: "参与 <i>Age of Empires Mobile</i> 的游戏设计工作，设计并上线了英雄天赋系统，覆盖从概念设计到正式上线的完整功能开发流程。",
+        projects_title: "代表项目", empire_text: "一款融合多种玩法风格的单人策略游戏。由我独立设计和开发，并已发布在 Steam 平台。该游戏使用 Unity 开发。",
+        touch_text: "一款使用 Unity 独立设计与开发的 2D 策略解谜游戏。", jurassic_text: "一款使用 C++ 开发的 3D 第一人称幸存者类游戏。",
+        game_title:"《帝国余晖》",ray_title: "C++ 光线追踪渲染器", ray_text: "使用 C++ 实现光线追踪器与路径追踪器，包括渲染材质系统，并结合 Open Image Denoise 进行 AI 降噪。",
+        medieval_title: "3D 中世纪 RTS / 动作游戏", medieval_text: "设计并开发了一款结合 RTS 与动作元素的 3D 中世纪风格游戏，包括游戏循环、NPC 行为、战斗系统与玩家控制。",
+        scifi_title: "科幻战斗游戏", scifi_text: "在 43 人团队项目中负责坦克战役关卡内容、敌人模块设计与实现、行为树、有限状态机、寻路系统，并使用 GitHub 进行版本控制。",
+        chat_title: "网络群聊系统", chat_text: "开发了一个客户端-服务器架构的网络聊天应用，包含 UI 与通知音效，并集成 GROQ AI API 支持 AI 群聊助手功能。",
+        view_steam: "在 Steam 查看 →", view_github: "在 GitHub 查看 →",
+        contact_title: "联系", contact_lead: "我正在寻找游戏设计与游戏开发相关机会。", footer_text: "© 2026 Xiangyu Ji. 游戏设计师 / 游戏开发者。"
+      }
+    };
+
+    const langToggle = document.getElementById("langToggle");
+    const i18nElements = document.querySelectorAll("[data-i18n]");
+
+    function setLanguage(lang) {
+      document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
+      localStorage.setItem("siteLanguage", lang);
+      i18nElements.forEach((element) => {
+        const key = element.getAttribute("data-i18n");
+        if (translations[lang][key]) {
+          element.innerHTML = translations[lang][key];
+        }
+      });
+      langToggle.textContent = lang === "en" ? "中文" : "English";
+    }
+
+    const savedLanguage = localStorage.getItem("siteLanguage") || "en";
+    setLanguage(savedLanguage);
+
+    langToggle.addEventListener("click", () => {
+      const currentLanguage = localStorage.getItem("siteLanguage") || "en";
+      setLanguage(currentLanguage === "en" ? "zh" : "en");
+    });
+  </script>
 </body>
 </html>
