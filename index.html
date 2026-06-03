@@ -56,6 +56,33 @@
       transition: color 0.2s ease;
     }
 
+    .profile-image {
+    width: 180px;
+    height: 180px;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    display: block;
+    margin: 0 auto 20px auto;
+
+    border: 3px solid var(--accent);
+    }
+
+    .project-image {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+
+    object-fit: cover;
+
+    border-radius: 12px;
+
+    border: 1px solid var(--line);
+
+    margin-bottom: 16px;
+    }
+
     nav a:hover { color: var(--accent); }
     
     .project-video {
@@ -351,23 +378,24 @@
     
     <div class="grid">
       <div class="project-card"><h3 data-i18n="game_title">Empire Twilight</h3>
+      <a href="Images/test.png" target="_blank">
+      <img
+      src="Images/test.png"
+      alt="Empire Twilight"
+      class="project-image">
+      </a>
       <p data-i18n="empire_text">A single-player strategy game combining multiple gameplay styles. Designed and developed independently and published on Steam. This game was developed by using Unity.</p><p><a href="https://store.steampowered.com/app/2966280/_/" target="_blank" rel="noopener" data-i18n="view_steam">View on Steam →</a></p></div>
-      <div class="project-card"><h3>Touch Heart</h3><p data-i18n="touch_text">A 2D strategy puzzle game designed and developed as an independent project developed by using Unity.</p><p><a href="https://github.com/LeoJi-Ychen/Touch-Heart.git" target="_blank" rel="noopener" data-i18n="view_github">View on GitHub →</a></p></div>
+      <div class="project-card"><h3>Touch Heart</h3>
+      <div class="project-video">
+      <iframe
+      src="https://player.bilibili.com/player.html?bvid=BV1m84y1Z7qF"
+      allowfullscreen>
+      </iframe>
+      </div>
+      <p data-i18n="touch_text">A 2D strategy puzzle game designed and developed as an independent project developed by using Unity.</p><p><a href="https://github.com/LeoJi-Ychen/Touch-Heart.git" target="_blank" rel="noopener" data-i18n="view_github">View on GitHub →</a></p></div>
       <div class="project-card"><h3>Jurassic Survivor</h3>
-      <div class="project-video">
-      <iframe
-      src="https://player.bilibili.com/player.html?bvid=BV1m84y1Z7qF"
-      allowfullscreen>
-      </iframe>
-      </div>
       <p data-i18n="jurassic_text">A 3D FPS survivor-like game developed by using C++.</p><p><a href="https://github.com/LeoJi-Ychen/ComputerGraphicsProject.git" target="_blank" rel="noopener" data-i18n="view_github">View on GitHub →</a></p></div>
-      <div class="project-card"><h3 data-i18n="medieval_title">A 3D Medieval RTS / Action Game</h3>
-      <div class="project-video">
-      <iframe
-      src="https://player.bilibili.com/player.html?bvid=BV1m84y1Z7qF"
-      allowfullscreen>
-      </iframe>
-      </div>
+      <div class="project-card"><h3 data-i18n="medieval_title">A 3D Medieval RTS / Action Game</h3>    
       <p data-i18n="medieval_text">Designed and developed a 3D medieval-style game combining RTS and action elements, including the game loop, NPC behaviour, combat system, and player controls.</p></div>  
       <div class="project-card"><h3 data-i18n="scifi_title">A Sci-Fi Combat Game</h3>
       <p data-i18n="scifi_text">Worked in a 43-person team and contributed to tank campaign level content, enemy module design and implementation, behaviour trees, finite state machines, pathfinding, and GitHub version control.</p></div>
